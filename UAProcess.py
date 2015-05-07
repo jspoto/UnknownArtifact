@@ -8,6 +8,25 @@ outputfile = None
 outstream = None
 digs = string.digits + string.letters
 
+def levenshtein(s, t):
+        ''' From Wikipedia article; Iterative with two matrix rows. '''
+        if s == t: return 0
+        elif len(s) == 0: return len(t)
+        elif len(t) == 0: return len(s)
+        v0 = [None] * (len(t) + 1)
+        v1 = [None] * (len(t) + 1)
+        for i in range(len(v0)):
+            v0[i] = i
+        for i in range(len(s)):
+            v1[0] = i + 1
+            for j in range(len(t)):
+                cost = 0 if s[i] == t[j] else 1
+                v1[j + 1] = min(v1[j] + 1, v0[j + 1] + 1, v0[j] + cost)
+            for j in range(len(v0)):
+                v0[j] = v1[j]
+ 
+        return v1[len(t)]
+
 def int2base(x, base):
     if x < 0: sign = -1
     elif x == 0: return digs[0]
@@ -99,10 +118,10 @@ def main(argv):
     comment = None
     numDicts = 7
     missingGlyphs = 0
+    lastContent = None
     
     dictlist = [dict() for x in range(numDicts)]
-    glyphTables = buildGlyphTables(numDicts)
-    
+    glyphTables = buildGlyphTables(numDicts)    
     
     for line in lines:
         parsedLines = line.split('#')
@@ -121,16 +140,21 @@ def main(argv):
             
             b12 = int2base(dec, 12)
             
-            lidx = len(content)-1;
+            if(lastContent != None):
+                hd = levenshtein(content, lastContent)
+            else:
+                hd = '-'
+                
+            lastContent = content
             
+            lidx = len(content)-1;            
             if(content not in dictlist[lidx]):
                 dictlist[lidx][content] = 1
             else:
-                #num = dictlist[lidx][content]
                 dictlist[lidx][content] += 1
             
             if not(valid):
-                writeLine('\t\tDec\trDec\tfDec\tGly\tB12')
+                writeLine('\t\tDec\trDec\tfDec\tGly\tB12\tLev')
                 valid = True
         except:
             dec = ''
@@ -138,9 +162,11 @@ def main(argv):
             brev = ''
             glyph = ''
             b12 = ''
+            hd = ''
             valid = False
+            lastContent = None
                 
-        writeLine("{}\t\t{}\t{}\t{}\t{}\t{}\t{}".format(content, dec, brev, drev, glyph, b12, comment))
+        writeLine("{}\t\t{}\t{}\t{}\t{}\t{}\t{}\t{}".format(content, dec, brev, drev, glyph, b12, hd, comment))
     
     writeLine("-----------------------------------------------------------------------\n\nSummary:")
     for n in range(numDicts):
