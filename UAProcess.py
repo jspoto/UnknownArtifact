@@ -87,6 +87,11 @@ def writeLine(str):
     else:
         outstream.write(str + '\n')
 
+def glyphString(binStr, tables):
+    l = len(binStr)
+    idx = l - 1
+    glyph = str(l) + '-' + str(tables[idx][binStr]).zfill(2)    
+    return glyph
         
 inputfile = None
 outputfile = None
@@ -149,8 +154,9 @@ def main(argv):
             brev = int(content[::-1],2)
             bits = len(content)
             lIdx = bits - 1
+            
             if(content in glyphTables[lIdx]):
-                glyph = str(bits) + '-' + str(glyphTables[lIdx][content]).zfill(2)
+                glyph = glyphString(content, glyphTables)
             else:
                 glyph = ' *'
                 missingGlyphs += 1
@@ -162,7 +168,7 @@ def main(argv):
             else:
                 hd = '-'
             
-            #Mark as successfuly parsed entry
+            # Mark as successfuly parsed entry
             lastContent = content
             totalWords += 1
             totalBits += bits
@@ -173,7 +179,7 @@ def main(argv):
                 dictlist[lIdx][content] += 1
             
             if not(valid):
-                writeLine('\t\tDec\trDec\tfDec\tGlph\tB12\tLev')
+                writeLine('\t\tDec\trDec\tfDec\tGlph\tb12\tLev')
                 valid = True
         except:
             dec = ''
@@ -187,18 +193,28 @@ def main(argv):
                 
         writeLine("{}\t\t{}\t{}\t{}\t{}\t{}\t{}\t{}".format(content, dec, brev, drev, glyph, b12, hd, comment))
     
-    writeLine("-----------------------------------------------------------------------\n\nSummary:\n")
+    writeLine("------------------------------------------------------------\n\nProcessing Complete, Summary:\n")
+
     for n in range(numDicts):
         entries = len(dictlist[n])
         if(entries > 0):
-            writeLine("{}-bit glyphs: {} (of {} possible)".format(n+1, entries, len(glyphTables[n])))
+            writeLine("  {}-bit glyphs: {} (of {} possible)".format(n+1, entries, len(glyphTables[n])))
 
     if(missingGlyphs > 0):
         writeLine("MISSING glyphs: {}".format(missingGlyphs))
 
-    writeLine("\nTotal Words: {0}".format(totalWords))
-    writeLine("Total Bits: {0}".format(totalBits))
-		
+    writeLine("\n  Total Words: {0}".format(totalWords))
+    writeLine("  Total Bits: {0}".format(totalBits))
+
+    for n in range(numDicts):
+        entries = len(dictlist[n])
+        if(entries > 0):
+            writeLine("\n  Glyph Counts ({}-bit)\n  -------------------------".format(n+1))
+            keylist = dictlist[n].keys()
+            keylist.sort()
+            for m in keylist:
+                writeLine("  ( {} )\t{}\t{}".format(m, glyphString(m, glyphTables), dictlist[n][m]))
+	
     writeLine('')
 
     if(outstream != None):
