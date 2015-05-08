@@ -3,11 +3,15 @@
 import sys, getopt
 import string
 
-inputfile = None
-outputfile = None
-outstream = None
-digs = string.digits + string.letters
 
+def getDigitsForVersion():
+    version = sys.version_info
+    if(version[0] == 2):
+        return string.digits + string.letters
+    else:
+        return string.digits + string.ascii_letters
+
+        
 def levenshtein(s, t):
         ''' From Wikipedia article; Iterative with two matrix rows. '''
         if s == t: return 0
@@ -27,6 +31,7 @@ def levenshtein(s, t):
  
         return v1[len(t)]
 
+        
 def int2base(x, base):
     if x < 0: sign = -1
     elif x == 0: return digs[0]
@@ -41,9 +46,11 @@ def int2base(x, base):
     digits.reverse()
     return ''.join(digits)
 
+    
 def printUsage():
     print ('test.py -i <inputfile> [-o <outputfile>]')
     return;
+    
     
 def buildGlyphTables(numDicts):
     setlist = []    
@@ -79,13 +86,22 @@ def writeLine(str):
         print(str)
     else:
         outstream.write(str + '\n')
-    
+
+def glyphString(binStr, tables):
+    l = len(binStr)
+    idx = l - 1
+    glyph = str(l) + '-' + str(tables[idx][binStr]).zfill(2)    
+    return glyph
+        
+inputfile = None
+outputfile = None
+outstream = None        
+digs = getDigitsForVersion()   
 
 def main(argv):
     global inputfile 
     global outputfile
     global outstream
-    print('')
     
     try:
         opts, args = getopt.getopt(argv,"hi:o:",["ifile=","ofile="])
@@ -112,6 +128,11 @@ def main(argv):
         except:
             print("Unable to open output file \'" + outputfile + "\'")
             sys.exit()
+
+    print('')
+    
+    totalWords = 0
+    totalBits = 0
     
     lines = [line.strip() for line in open(inputfile)] 
     valid = False
@@ -131,9 +152,11 @@ def main(argv):
             dec = int(content,2)
             drev = str(dec)[::-1]
             brev = int(content[::-1],2)
-            l = len(content)-1
-            if(content in glyphTables[l]):
-                glyph = str(l+1) + '-' + str(glyphTables[l][content]).zfill(2)
+            bits = len(content)
+            lIdx = bits - 1
+            
+            if(content in glyphTables[lIdx]):
+                glyph = glyphString(content, glyphTables)
             else:
                 glyph = ' *'
                 missingGlyphs += 1
@@ -144,17 +167,19 @@ def main(argv):
                 hd = levenshtein(content, lastContent)
             else:
                 hd = '-'
-                
-            lastContent = content
             
-            lidx = len(content)-1;            
-            if(content not in dictlist[lidx]):
-                dictlist[lidx][content] = 1
+            # Mark as successfuly parsed entry
+            lastContent = content
+            totalWords += 1
+            totalBits += bits
+            
+            if(content not in dictlist[lIdx]):
+                dictlist[lIdx][content] = 1
             else:
-                dictlist[lidx][content] += 1
+                dictlist[lIdx][content] += 1
             
             if not(valid):
-                writeLine('\t\tDec\trDec\tfDec\tGly\tB12\tLev')
+                writeLine('\t\tDec\trDec\tfDec\tGlph\tb12\tLev')
                 valid = True
         except:
             dec = ''
@@ -168,15 +193,28 @@ def main(argv):
                 
         writeLine("{}\t\t{}\t{}\t{}\t{}\t{}\t{}\t{}".format(content, dec, brev, drev, glyph, b12, hd, comment))
     
-    writeLine("-----------------------------------------------------------------------\n\nSummary:")
+    writeLine("------------------------------------------------------------\n\nProcessing Complete, Summary:\n")
+
     for n in range(numDicts):
         entries = len(dictlist[n])
         if(entries > 0):
-            writeLine("{}-bit glyphs: {} (of {} possible)".format(n+1, entries, len(glyphTables[n])))
+            writeLine("  {}-bit glyphs: {} (of {} possible)".format(n+1, entries, len(glyphTables[n])))
 
     if(missingGlyphs > 0):
         writeLine("MISSING glyphs: {}".format(missingGlyphs))
 
+    writeLine("\n  Total Words: {0}".format(totalWords))
+    writeLine("  Total Bits: {0}".format(totalBits))
+
+    for n in range(numDicts):
+        entries = len(dictlist[n])
+        if(entries > 0):
+            writeLine("\n  Glyph Counts ({}-bit)\n  -------------------------".format(n+1))
+            keylist = dictlist[n].keys()
+            keylist.sort()
+            for m in keylist:
+                writeLine("  ( {} )\t{}\t{}".format(m, glyphString(m, glyphTables), dictlist[n][m]))
+	
     writeLine('')
 
     if(outstream != None):
@@ -185,3 +223,4 @@ def main(argv):
 
 if __name__ == "__main__":
     main(sys.argv[1:])
+    
