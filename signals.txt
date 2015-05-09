@@ -1,5 +1,423 @@
+
+# UNKNOWN ARTEFACT TRANSCRIPTIONS
+# date: 08/05/2015
+# transcribed by: Mr. Hidden and digitalscream
+# 
+# Legend:
+# 1 - high pitch tone
+# 0 - low pitch tone
+# ? - unknown tone, but present
+# ??? - incomplete records, unknown number of tones (if any)
+# h3 - three tone "honk"
+# h4 - four tone "honk"
+# 
+# Notes:
+# 0/1 are used just for transcription purposes, their meaning may be opposite
+# Weak (barely audible) fist/last bits were probably caused by different viewing angles
+
+
+# UA 2, take 1
+# location: He Bo 3, owner: saman, date taken: 06/05/2015
+# source: https://www.dropbox.com/s/uxa9nnlor0..._bo_3.mp3?dl=1
+110011     # h3  weak first bit
+101100     # h4  
+010101     # h3  
+010011     # h4  
+1101001    # h3  weak first bit
+001010     # h4  
+001010     # h3  
+0110110    # h4  
+0110101    # h3  
+10110??    # ??  incomplete
+
+# UA 2, take 2
+# location: He Bo 5, owner: saman, date taken: 06/05/2015
+# source: https://www.dropbox.com/s/hiz85rbvmj...first.mp3?dl=1
+100110     # h4  weal first bit
+001100     # h3  
+1001001    # h4 
+0110101    # h3  weak last bit
+001001     # h4  
+0011???    # ??  incomplete
+
+# UA 2, take 3
+# location: He Bo 5, owner: saman, date taken: 06/05/2015
+# source: https://www.dropbox.com/s/fgj7qo0c66...econd.mp3?dl=1
+100101     # h3  weak first bit
+001001     # h4
+0101010    # h3
+110101     # h4
+101100     # h3
+011001     # h4
+0110110    # h3
+1101100    # h4
+1001101    # h3
+0110???    # ??  incomplete
+
+# UA 2, take 4
+# location: He Bo 6, owner: saman, date taken: 06/05/2015
+# source: https://www.dropbox.com/s/11ob1290od..._bo_6.mp3?dl=1
+100100     # h4  weak first bit
+001011     # h3  
+0110010    # h4  weak first bit
+1001011    # h3  
+0100110    # h4  
+1001100    # h3  
+0101001    # h4  
+0010010    # h3  weak first bit
+001001     # h4  
+1001???    # ??  incomplete
+
+# UA 2, take 5
+# location: Alyuto A, owner: saman, date taken: 06/05/2015
+# source: https://www.dropbox.com/s/fcfww9vj90...first.mp3?dl=1
+001010     # h3  weak last bit
+1101001    # h4  weak last bit
+1100110    # h3  
+0110011    # h4  weak first bit
+101001     # h3  
+1001010    # h4  
+1001100    # h3  weak first bit
+1001010    # h4  weak last bit
+1001101    # h3  
+1001001    # h4  
+10011??    # ??  incomplete
+
+# UA 2, take 6
+# location: Alyuto A, owner: saman, date taken: 06/05/2015
+# source: https://www.dropbox.com/s/nufayi410m...econd.mp3?dl=1
+010011     # h3
+0110101    # h4
+0110101    # h3
+010110     # h4
+001010     # h3
+0010011    # h4
+0110011    # h3  weak first bit
+1001011    # h4  
+0101011    # h3  weak first bit
+110110?    # ??  incomplete
+
+# UA 2, take 7
+# location: Kaunan A 1, owner: saman, date taken: 06/05/2015
+# source: https://www.dropbox.com/s/brz9tj4omg...n_a_1.mp3?dl=1
+0010111    # h3  weak last bit
+0100100    # h4  weak first bit
+0110101    # h3  weak last bit
+0110100    # h4  weak first bit
+1100110101 # h3  
+01001100   # h4  
+1001011    # h3  
+10110010   # h4  
+0010010101 # h3  
+#101001????  ??  incomplete
+
+# UA 2, take 8
+# location: Kaunan A 3, owner: saman, date taken: 06/05/2015
+# source: https://www.dropbox.com/s/sdwkid5ctk...n_a_3.mp3?dl=1
+011001     # h3
+110010     # h4
+1001101    # h3
+011010     # h4
+0110011    # h3
+100110     # h4
+0101101    # h3  weak first bit
+1101001    # h4  weak first bit
+0100101    # h3  
+110011?    # ??  incomplete
+                
+# UA 2, take 9
+# location: Hera 3, owner: saman, date taken: 06/05/2015
+# source: https://www.dropbox.com/s/2mr7pgdu9u...era_3.mp3?dl=1
+# note: lower "bit" frequency
+110100     # h4  weak first bit
+00101?0    # h3  one bit not audible, but present
+100100     # h4  
+0011010    # h3  
+0011011    # h4  weak last bit
+01100?     # h3  one bit not audible, but present
+0110100    # h4  weak first bit
+010010     # h3  
+00100?     # h4  one bit not audible, but present
+010110?    # h3      weak whole sequence, except honk
+01100??    # ??  incomplete, weak whole sequence
+
+# UA 2, take 10
+# location: Ross 154, owner: saman, date taken: 06/05/2015
+# source: https://www.dropbox.com/s/bcw4cq4ltm...first.mp3?dl=1
+# note: lower "bit" frequency
+101100     # h3
+001101     # h4
+1001100    # h3
+001100     # h4
+0110101    # h3
+1001101    # h4  weak last bit
+0110011    # h3  weak first bit
+1001001    # h4  weak first bit
+1100100    # h3  
+010010?    # ??  incomplete
+
+# UA 2, take 11
+# location: Ross 154, owner: saman, date taken: 06/05/2015
+# source: https://www.dropbox.com/s/eg8no4649z...econd.mp3?dl=1
+# note: lower "bit" frequency
+100100     # h4
+001001     # h3
+1011010    # h4
+011011     # h3
+1001001    # h4
+001010     # h3
+0010110    # h4
+1010110    # h3
+0011001    # h4
+#011001?     ??  incomplete
+
+# UA 2, take 12
+# location: Ross 154/Aster, owner: saman, date taken: 06/05/2015
+# source: https://www.dropbox.com/s/6e3w6nohc2...aster.mp3?dl=1
+# note: lower "bit" frequency
+100101     # h4  no delay between bit chunks
+1001001    # h3      no delay between bit chunks
+1011011    # h4  no delay between bit chunks
+010010     # h3  
+100110     # h4  
+1010110    # h3  
+1100110    # h4  
+101100     # h3  
+0010011    # h4  
+#10010??     ??  incomplete
+
+
+# UA 3, take 1
+# location: 109 Virginis, owner: Murp, date taken: 05/05/2015
+# source: https://www.youtube.com/watch?v=pmfcAqK48po
+10010      # h3
+001010     # h4
+#011???      ??  incomplete
+
+# UA 3, take 2
+# location: Sol, owner: Murp, date taken: 06/05/2015
+# source: https://www.youtube.com/watch?v=jxxZB9ytxQw
+??10001    # h3      probably incomplete, weak last bit
+101010     # h4
+101001     # h3
+#01????      ??  incomplete
+
+
+# UA 4, take 1-13
+# location: Sol, owner: glynie, date taken: 07/05/2015
+# source: https://www.dropbox.com/s/f1tst8pbp9...ED-UA.mp3?dl=0
+# note: transcription for honks,etc. needs to be finished
+110011     # h4
+101100     # h3
+1001011    # h4
+011001     # h3
+0010010    # h4      weak last bit
+0110011    # h3  
+0101100    # h4  
+0110110    # h3      weak last bit
+1001010    # h4  weak first bit
+1100100    # h3  
+0100110    # h4  
+           #     
+0101001    # h4  
+010100     # h3  
+101010     # h4  
+1011011    # h3  
+1101100    # h4      weak last bit
+1001101    # h3  weak first bit
+0010100    # h4
+101001     # h3
+0110110    # h4
+1010100    # h3
+1011001    # h4
+
+011011
+011001
+0110011
+110011
+1100101
+001001
+1101100
+0110100
+1100110
+0101010
+001010?
+
+011011
+011001
+1001100
+1001100
+010110
+1010010
+100100
+1001010
+0011001
+0110010
+1001011
+
+011010
+011001
+0010100
+100100
+1011010
+101011
+1100110
+1001100
+1011010
+100100
+
+101101
+011001
+1101101
+010010
+1001011
+0011001
+1011010
+1011011
+0110101
+0011001
+
+0100100
+1001101
+1011001
+011001
+001001
+1001101
+010010
+1011001
+1001101
+0110101
+0110110
+
+1100101
+0100110
+0100110
+1100101
+1001001
+001101
+1001101
+0011011
+0110110
+0100110
+1001100
+
+1010110
+0101101
+1001001
+0010010
+100101
+010110
+1101101
+0101101
+1011011
+1011010
+1010101
+
+1001101
+0100110
+1001010
+001100
+001011
+1100100
+1101011
+1101001
+1001100
+1010010
+0110110
+
+1011001
+0010011
+0011001
+011010
+110101
+1010010
+0100110
+1010110
+1001001
+0100101
+0011011
+
+0110011
+101010
+101011
+0101011
+0011010
+0100110
+1010100
+0110010
+0110100
+
+0100100
+1001101
+1001001
+1001100
+010010
+0011010
+0110100
+1011011
+0010011
+1011001
+0010110
+
+
+
+# UA 5, take 1-4
+# location: ???, owner: digitalscream, date taken: 07/05/2015
+# source: http://www.digitalscream.org.uk/audio/
+# note: transcription for honks,etc. needs to be finished
+0101101
+0011011
+1010110
+1001101
+0011001
+0110101
+0011001
+0110100
+1010011
+0100110
+
+011011
+0110010
+1001101
+100101
+010010
+0010110
+1101001
+0010110
+1011001
+0100110
+1010100
+
+1011001
+0100110
+100110
+101001
+101011
+1101100
+0110011
+1100110
+1001101
+0101101
+0101011
+
+1010011
+0110011
+1001100
+1001011
+1010011
+0100100
+1011011
+0110011
+1100100
+1001001
+0100101
+
+
+# ///////////////////////////////////////////////////////////////////////////
+
+
 #unknown_artifact_audio_long_1
-011 		# ? <-cutoff?
+011         # ? <-cutoff?
 100100
 0010010
 1001011
@@ -7,9 +425,9 @@
 0110011
 1101010
 0011010
-100101  	# ?
+100101      # ?
 0110101
-0110110 	# <- cutoff?
+0110110     # <- cutoff?
 
 #unknown_artifact_audio_long_2 
 00100
@@ -22,7 +440,7 @@
 1010110
 0011001
 0110011
-0110110 	# <- cutoff?
+0110110     # <- cutoff?
 
 #ua_1 (fragment?)
 010011
@@ -35,7 +453,7 @@
 0101011
 001001   
 1100100
-1010110 	# <- cutoff?
+1010110     # <- cutoff?
 
 #ua_2 (fragment?)
 11011
@@ -48,11 +466,11 @@
 0110101
 0101100
 0110010
-1100110 	# <-cutoff?
+1100110     # <-cutoff?
 
 #ua_3 (fragment?)
 01100 
-101001 		# ?
+101001      # ?
 0101100
 0011011
 1011001
@@ -61,7 +479,7 @@
 0100110
 011001 
 1001011
-1010110 	# <-cutoff?
+1010110     # <-cutoff?
 
 #ua_4 (fragment?)
 00110
@@ -74,7 +492,7 @@
 1001101
 1001100
 1001011
-101001 		# <- cutoff?
+101001      # <- cutoff?
 
 #ua_5 (fragment?)
 01101
@@ -87,7 +505,7 @@
 101010
 0110011
 0101001
-1101001 	# <-cutoff?
+1101001     # <-cutoff?
  
 
 #UA_6:

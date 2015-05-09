@@ -52,10 +52,10 @@ def printUsage():
     return;
     
     
-def buildGlyphTables(numDicts):
+def buildGlyphTables(maxNumBits):
     setlist = []    
     get_bin = lambda x, n: x >= 0 and str(bin(x))[2:].zfill(n) or "-" + str(bin(x))[3:].zfill(n)    
-    for y in range(numDicts):
+    for y in range(maxNumBits):
         newdict = dict()
         length = y+1
         maxval = 2**length
@@ -79,6 +79,20 @@ def buildGlyphTables(numDicts):
                 
         setlist.append(newdict) 
     return setlist
+    
+def writeWordList(list, name, tables):
+    for n in range(len(list)):
+        entries = len(list[n])
+        if(entries > 0):
+            writeLine("\n  {} Counts ({}-bit)\n  -------------------------".format(name, n+1))
+            keylist = list[n].keys()
+            keylist.sort()
+            for m in keylist:
+                if m in tables[n]:
+                    gs = glyphString(m, tables)
+                else:
+                    gs = '****'
+                writeLine("  ( {} )\t{}\t{}".format(m, gs, list[n][m])) 
     
 
 def writeLine(str):
@@ -137,12 +151,13 @@ def main(argv):
     lines = [line.strip() for line in open(inputfile)] 
     valid = False
     comment = None
-    numDicts = 7
+    maxNumBits = 7
     missingGlyphs = 0
     lastContent = None
     
-    dictlist = [dict() for x in range(numDicts)]
-    glyphTables = buildGlyphTables(numDicts)    
+    wordList = [dict() for x in range(maxNumBits)]
+    glyphList = [dict() for x in range(maxNumBits)]
+    glyphTables = buildGlyphTables(maxNumBits)    
     
     for line in lines:
         parsedLines = line.split('#')
@@ -157,9 +172,11 @@ def main(argv):
             
             if(content in glyphTables[lIdx]):
                 glyph = glyphString(content, glyphTables)
+                list = glyphList
             else:
                 glyph = ' *'
                 missingGlyphs += 1
+                list = wordList
             
             b12 = int2base(dec, 12)
             
@@ -173,13 +190,14 @@ def main(argv):
             totalWords += 1
             totalBits += bits
             
-            if(content not in dictlist[lIdx]):
-                dictlist[lIdx][content] = 1
+            
+            if(content not in list[lIdx]):
+                list[lIdx][content] = 1
             else:
-                dictlist[lIdx][content] += 1
+                list[lIdx][content] += 1
             
             if not(valid):
-                writeLine('\t\tDec\trDec\tfDec\tGlph\tb12\tLev')
+                writeLine('\t\tDec\trDec\tfDec\tGlph\tb12\tLev\t|')
                 valid = True
         except:
             dec = ''
@@ -191,30 +209,37 @@ def main(argv):
             valid = False
             lastContent = None
                 
-        writeLine("{}\t\t{}\t{}\t{}\t{}\t{}\t{}\t{}".format(content, dec, brev, drev, glyph, b12, hd, comment))
+        writeLine("{}\t\t{}\t{}\t{}\t{}\t{}\t{}\t| {}".format(content, dec, brev, drev, glyph, b12, hd, comment))
     
     writeLine("------------------------------------------------------------\n\nProcessing Complete, Summary:\n")
 
-    for n in range(numDicts):
-        entries = len(dictlist[n])
+    for n in range(maxNumBits):
+        entries = len(glyphList[n])
         if(entries > 0):
             writeLine("  {}-bit glyphs: {} (of {} possible)".format(n+1, entries, len(glyphTables[n])))
 
     if(missingGlyphs > 0):
-        writeLine("MISSING glyphs: {}".format(missingGlyphs))
-
+        writeLine("  NON-GLYPHS: {}".format(missingGlyphs))
+	
     writeLine("\n  Total Words: {0}".format(totalWords))
     writeLine("  Total Bits: {0}".format(totalBits))
 
-    for n in range(numDicts):
-        entries = len(dictlist[n])
-        if(entries > 0):
-            writeLine("\n  Glyph Counts ({}-bit)\n  -------------------------".format(n+1))
-            keylist = dictlist[n].keys()
-            keylist.sort()
-            for m in keylist:
-                writeLine("  ( {} )\t{}\t{}".format(m, glyphString(m, glyphTables), dictlist[n][m]))
-	
+#    for n in range(maxNumBits):
+#        entries = len(glyphList[n])
+#        if(entries > 0):
+#            writeLine("\n  Glyph Counts ({}-bit)\n  -------------------------".format(n+1))
+#            keylist = glyphList[n].keys()
+#            keylist.sort()
+#            for m in keylist:
+#                if m in glyphTables[n]:
+#                    gs = glyphString(m, glyphTables)
+#                else:
+#                    gs = '****'
+#                writeLine("  ( {} )\t{}\t{}".format(m, gs, glyphList[n][m]))
+
+    writeWordList(glyphList, 'Glyph', glyphTables)
+    writeWordList(wordList, 'Word (non-glyph)', glyphTables)
+             
     writeLine('')
 
     if(outstream != None):
